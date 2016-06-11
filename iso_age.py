@@ -3,13 +3,11 @@ import matplotlib.pyplot as plt
 from isochrones.dartmouth import Dartmouth_Isochrone
 from isochrones import StarModel
 
-def calc_age(data):
-    return data
+def iso_age(teff, logg, feh):
     dar = Dartmouth_Isochrone()
-    mod = StarModel(dar, Teff=(5770, 80), logg=(4.44, 0.10), feh=(0.0, 0.1))
+    mod = StarModel(dar, Teff=(teff, 80), Logg=(logg, 0.10), Feh=(feh, 0.1))
     logage, _, _ = mod.maxlike()
     age = np.exp(logage)
-    print(age)
     return age
 
 if __name__ == "__main__":

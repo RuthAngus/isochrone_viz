@@ -11,27 +11,11 @@ def index():
 
 @app.route('/calc-age', methods=["POST"])
 def calc_age():
-    teff = request.form["teff"]
-    logg = request.form["logg"]
-    feh = request.form["feh"]
-    # age = calc_age(request.form["teff"])
-    return "{0}, {1}, {2}".format(teff, logg, feh)
-
-# @app.route('/calc_age.py', methods=['POST'])
-# def index():
-#     print(request.form['projectFilepath'])
-#     test = request.form['projectFilepath']
-#     # age_text = calc_age()
-#     age_text = test
-#     return render_template('index.html', age_text=age_text)
-
-
-# @app.route('/calc_age.py', methods=['POST'])
-# def index():
-#     print("I got it!")
-#     print(request.form['projectFilepath'])
-#     return render_template('index.html')
-
+    teff = float(request.form["teff"])
+    logg = float(request.form["logg"])
+    feh = float(request.form["feh"])
+    age = iso_age(teff, logg, feh)
+    return "Age = {0} Myr".format(age)
 
 # @app.route('/image/<figname>')
 # def image("trilegal_period_hist-80.pdf"):
